@@ -2,7 +2,7 @@ export const PARTNERS = [
   {
     id: 0,
     name: "Bootstrap Outfitters",
-    image: "./images/bootstrap-logo.png",
+    image: "/assets/images/bootstrap-logo.png",
     featured: false,
     description:
       "Bootstrap Outfitters supplies you with the gear you need at prices you can't beat.",
