@@ -44,11 +44,7 @@ function RenderCampsite(props) {
           color="#f50"
           raised
           reverse
-          onPress={() =>
-            props.favorite
-              ? console.log("Already set as a favorite")
-              : props.markFavorite()
-          }
+          onPress={() => props.toggleFavorite()}
         />
       </Card>
     );
@@ -70,8 +66,9 @@ class CampsiteInfo extends Component {
     title: "Campsite Information",
   };
 
-  markFavorite() {
-    this.setState({ favorite: true });
+  // instruction function name is "markFavorite"
+  toggleFavorite() {
+    this.setState((prev) => ({ favorite: !prev.favorite }));
   }
 
   render() {
@@ -87,7 +84,7 @@ class CampsiteInfo extends Component {
         <RenderCampsite
           campsite={campsite}
           favorite={this.state.favorite}
-          markFavorite={() => this.markFavorite()}
+          toggleFavorite={() => this.toggleFavorite()}
         />
         <RenderComments comments={comments} />
       </ScrollView>
