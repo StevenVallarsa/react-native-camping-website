@@ -1,7 +1,7 @@
 import * as ActionTypes from "./ActionTypes";
 
 export const campsites = (
-  state = { isLoading: true, errorMessage: null, ccampsites: [] },
+  state = { isLoading: true, errMess: null, campsites: [] },
   action
 ) => {
   switch (action.type) {
@@ -9,13 +9,13 @@ export const campsites = (
       return {
         ...state,
         isLoading: false,
-        errorMessage: null,
+        errMess: null,
         campsites: action.payload,
       };
     case ActionTypes.CAMPSITES_LOADING:
-      return { ...state, isLoading: true, errorMessage: null, campsites: [] };
+      return { ...state, isLoading: true, errMess: null, campsites: [] };
     case ActionTypes.CAMPSITES_FAILED:
-      return { ...state, isLoading: false, errorMessage: action.payload };
+      return { ...state, isLoading: false, errMess: action.payload };
     default:
       return state;
   }

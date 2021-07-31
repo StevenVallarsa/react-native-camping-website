@@ -34,10 +34,10 @@ class Directory extends Component {
       return <Loading />;
     }
 
-    if (this.props.campsites.errorMessage) {
+    if (this.props.campsites.errMess) {
       return (
         <View>
-          <Text>{this.props.campsites.errorMessage}</Text>
+          <Text>{this.props.campsites.errMess}</Text>
         </View>
       );
     }

@@ -19,10 +19,10 @@ function RenderItem(props) {
   if (props.isLoading) {
     return <Loading />;
   }
-  if (props.errorMessage) {
+  if (props.errMess) {
     return (
       <View>
-        <Text>{props.errorMessage}</Text>
+        <Text>{props.errMess}</Text>
       </View>
     );
   }
@@ -51,7 +51,7 @@ class Home extends Component {
             )[0]
           }
           isLoading={this.props.campsites.isLoading}
-          errorMessage={this.props.campsites.errorMessage}
+          errMess={this.props.campsites.errMess}
         />
         <RenderItem
           item={
@@ -60,7 +60,7 @@ class Home extends Component {
             )[0]
           }
           isLoading={this.props.promotions.isLoading}
-          errorMessage={this.props.promotions.errorMessage}
+          errMess={this.props.promotions.errMess}
         />
         <RenderItem
           item={
@@ -69,7 +69,7 @@ class Home extends Component {
             )[0]
           }
           isLoading={this.props.partners.isLoading}
-          errorMessage={this.props.partners.errorMessage}
+          errMess={this.props.partners.errMess}
         />
       </ScrollView>
     );

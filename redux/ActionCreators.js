@@ -16,8 +16,8 @@ export const fetchComments = () => (dispatch) => {
         }
       },
       (error) => {
-        const errorMessage = new Error(error.message);
-        throw errorMessage;
+        const errMess = new Error(error.message);
+        throw errMess;
       }
     )
     .then((response) => response.json())
@@ -25,9 +25,9 @@ export const fetchComments = () => (dispatch) => {
     .catch((error) => dispatch(commentsFailed(error.message)));
 };
 
-export const commentsFailed = (errorMessage) => ({
+export const commentsFailed = (errMess) => ({
   type: ActionTypes.COMMENTS_FAILED,
-  payload: errorMessage,
+  payload: errMess,
 });
 
 export const addComments = (comments) => ({
@@ -52,8 +52,8 @@ export const fetchCampsites = () => (dispatch) => {
         }
       },
       (error) => {
-        const errorMessage = new Error(error.message);
-        throw errorMessage;
+        const errMess = new Error(error.message);
+        throw errMess;
       }
     )
     .then((response) => response.json())
@@ -65,9 +65,9 @@ export const campsitesLoading = () => ({
   type: ActionTypes.CAMPSITES_LOADING,
 });
 
-export const campsitesFailed = (errorMessage) => ({
+export const campsitesFailed = (errMess) => ({
   type: ActionTypes.CAMPSITES_FAILED,
-  payload: errorMessage,
+  payload: errMess,
 });
 
 export const addCampsites = (campsites) => ({
@@ -92,8 +92,8 @@ export const fetchPromotions = () => (dispatch) => {
         }
       },
       (error) => {
-        const errorMessage = new Error(error.message);
-        throw errorMessage;
+        const errMess = new Error(error.message);
+        throw errMess;
       }
     )
     .then((response) => response.json())
@@ -105,9 +105,9 @@ export const promotionsLoading = () => ({
   type: ActionTypes.PROMOTIONS_LOADING,
 });
 
-export const promotionsFailed = (errorMessage) => ({
+export const promotionsFailed = (errMess) => ({
   type: ActionTypes.PROMOTIONS_FAILED,
-  payload: errorMessage,
+  payload: errMess,
 });
 
 export const addPromotions = (promotions) => ({
@@ -132,8 +132,8 @@ export const fetchPartners = () => (dispatch) => {
         }
       },
       (error) => {
-        const errorMessage = new Error(error.message);
-        throw errorMessage;
+        const errMess = new Error(error.message);
+        throw errMess;
       }
     )
     .then((response) => response.json())
@@ -145,9 +145,9 @@ export const partnersLoading = () => ({
   type: ActionTypes.PARTNERS_LOADING,
 });
 
-export const partnersFailed = (errorMessage) => ({
+export const partnersFailed = (errMess) => ({
   type: ActionTypes.PARTNERS_FAILED,
-  payload: errorMessage,
+  payload: errMess,
 });
 
 export const addPartners = (partners) => ({

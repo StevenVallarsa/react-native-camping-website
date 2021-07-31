@@ -54,12 +54,12 @@ class About extends Component {
       );
     }
 
-    if (this.props.partners.errorMessage) {
+    if (this.props.partners.errMess) {
       return (
         <ScrollView>
           <Mission />
           <Card title="Community Partners">
-            <Text>{this.props.partners.errorMessage}</Text>
+            <Text>{this.props.partners.errMess}</Text>
           </Card>
         </ScrollView>
       );
