@@ -72,7 +72,6 @@ class CampsiteInfo extends Component {
   };
 
   markFavorite(campsiteId) {
-    console.log("HERE");
     this.props.postFavorite(campsiteId);
   }
 
