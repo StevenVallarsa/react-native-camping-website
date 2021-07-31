@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, ScrollView, FlatList } from "react-native";
 import { Card, Icon } from "react-native-elements";
-import { CAMPSITES } from "../shared/campsites";
-import { COMMENTS } from "../shared/comments";
 
 import { connect } from "react-redux";
 import { baseUrl } from "../shared/baseUrl";
@@ -12,7 +10,7 @@ const mapStateToProps = (state) => {
   return {
     campsites: state.campsites,
     comments: state.comments,
-    favorites: state.favorite,
+    favorites: state.favorites,
   };
 };
 
@@ -60,7 +58,7 @@ function RenderCampsite(props) {
           color="#f50"
           raised
           reverse
-          onPress={() => props.toggleFavorite()}
+          onPress={() => props.markFavorite()}
         />
       </Card>
     );
@@ -74,6 +72,7 @@ class CampsiteInfo extends Component {
   };
 
   markFavorite(campsiteId) {
+    console.log("HERE");
     this.props.postFavorite(campsiteId);
   }
 
