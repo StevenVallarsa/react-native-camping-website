@@ -4,7 +4,7 @@ export const favorites = (state = [], action) => {
   switch (action.type) {
     case ActionTypes.ADD_FAVORITE:
       if (state.includes(action.payload)) {
-        return state;
+        return state.filter((id) => id !== action.payload);
       }
       return state.concat(action.payload);
 
