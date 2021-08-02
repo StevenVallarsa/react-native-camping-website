@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    marginTop: 20,
   },
   loadingText: {
     color: "#5637DD",
