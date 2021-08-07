@@ -7,7 +7,8 @@ import {
   Picker,
   Switch,
   Button,
-  Modal,
+  Alert,
+  // Modal,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as Animatable from "react-native-animatable";
@@ -19,7 +20,7 @@ class Reservation extends Component {
       hikeIn: false,
       date: new Date(),
       showCalendar: false,
-      showModal: false,
+      // showModal: false,
     };
   }
 
@@ -27,13 +28,31 @@ class Reservation extends Component {
     title: "Reserve Campsite",
   };
 
-  toggleModal() {
-    this.setState({ showModal: !this.state.showModal });
-  }
+  // toggleModal() {
+  //   this.setState({ showModal: !this.state.showModal });
+  // }
 
   handleReservation() {
     console.log(JSON.stringify(this.state));
-    this.toggleModal();
+    Alert.alert(
+      "Begin Search?",
+      `Number of campers: ${this.state.campers}\nHike-In? ${
+        this.state.hikeIn
+      }\nDate: ${this.state.date.toLocaleDateString()}`,
+      [
+        {
+          text: "Cancel",
+          onPress: () => this.resetForm(),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => this.resetForm(),
+        },
+      ],
+      { cancelable: false }
+    );
+    // this.toggleModal();
   }
 
   resetForm() {
@@ -42,7 +61,7 @@ class Reservation extends Component {
       hikeIn: false,
       date: new Date(),
       showCalendar: false,
-      showModal: false,
+      // showModal: false,
     });
   }
 
@@ -107,7 +126,7 @@ class Reservation extends Component {
               accessibilityLabel="Tap me to search for available campsites to reserve"
             />
           </View>
-          <Modal
+          {/* <Modal
             animationType={"slide"}
             transparent={false}
             visible={this.state.showModal}
@@ -133,7 +152,7 @@ class Reservation extends Component {
                 title="Close"
               />
             </View>
-          </Modal>
+          </Modal> */}
         </Animatable.View>
       </ScrollView>
     );
@@ -155,22 +174,22 @@ const styles = StyleSheet.create({
   formItem: {
     flex: 1,
   },
-  modal: {
-    justifyContent: "center",
-    margin: 20,
-  },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#5637DD",
-    textAlign: "center",
-    color: "#fff",
-    marginBottom: 20,
-  },
-  modalText: {
-    fontSize: 18,
-    margin: 10,
-  },
+  // modal: {
+  //   justifyContent: "center",
+  //   margin: 20,
+  // },
+  // modalTitle: {
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  //   backgroundColor: "#5637DD",
+  //   textAlign: "center",
+  //   color: "#fff",
+  //   marginBottom: 20,
+  // },
+  // modalText: {
+  //   fontSize: 18,
+  //   margin: 10,
+  // },
 });
 
 export default Reservation;
