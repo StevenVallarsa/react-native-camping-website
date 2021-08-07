@@ -33,6 +33,7 @@ const mapDispatchToProps = {
 
 function RenderComments({ comments }) {
   const renderCommentItem = ({ item }) => {
+    console.log(typeof item.rating);
     return (
       <View style={{ margin: 10 }}>
         <Text style={{ fontSize: 14 }}>{item.text}</Text>
@@ -66,6 +67,7 @@ function RenderCampsite(props) {
   const { campsite } = props;
   const view = createRef();
   const recognizeDrag = ({ dx }) => (dx < -200 ? true : false);
+  const recognizeComment = ({ dx }) => (dx > 200 ? true : false);
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -101,6 +103,8 @@ function RenderCampsite(props) {
             cancelable: false,
           }
         );
+      } else if (recognizeComment(gestureState)) {
+        props.onShowModal();
       }
       return true;
     },
