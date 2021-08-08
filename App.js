@@ -7,6 +7,8 @@ import Loading from "./components/LoadingComponent";
 
 const { persistor, store } = ConfigureStore();
 
+// kill $(lsof -ti:3000)
+
 export default function App() {
   return (
     <Provider store={store}>
