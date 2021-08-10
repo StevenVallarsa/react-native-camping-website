@@ -142,6 +142,27 @@ class RegisterTab extends Component {
     ),
   };
 
+  getImageFromCamera = async () => {
+    const cameraPermission = await Permissions.askAsync(Permissions.CAMERA);
+    const cameraRollPermission = await Permissions.askAsync(
+      Permissions.MEDIA_LIBRARY
+    );
+
+    if (
+      cameraPermission.status === "granted" &&
+      cameraRollPermission.status === "granted"
+    ) {
+      const capturedImage = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        aspect: [1, 1],
+      });
+      if (!capturedImage.cancelled) {
+        console.log(capturedImage);
+        this.setState({ imageUrl: capturedImage.uri });
+      }
+    }
+  };
+
   handleRegister() {
     console.log(JSON.stringify(this.state));
     if (this.state.remember) {
@@ -163,6 +184,14 @@ class RegisterTab extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={{ uri: this.state.imageUrl }}
+              loadingIndicator={require("./images/logo.png")}
+              style={styles.image}
+            />
+            <Button title="Camera" onPress={this.getImageFromCamera} />
+          </View>
           <Input
             placeholder="Username"
             leftIcon={{ type: "font-awesome", name: "user-o" }}
@@ -208,7 +237,7 @@ class RegisterTab extends Component {
             center
             checked={this.state.remember}
             onPress={() => this.setState({ remember: !this.state.remember })}
-            containerStyle={styles.formeCheckbox}
+            containerStyle={styles.formCheckbox}
           />
           <View style={styles.formButton}>
             <Button
@@ -250,20 +279,31 @@ const Login = createBottomTabNavigator(
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    margin: 20,
+    margin: 10,
   },
   formIcon: {
     marginRight: 10,
   },
   formInput: {
-    padding: 10,
+    padding: 0,
   },
   formCheckbox: {
-    margin: 10,
+    margin: 8,
     backgroundColor: null,
   },
   formButton: {
-    margin: 40,
+    margin: 20,
+  },
+  imageContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: 10,
+  },
+  image: {
+    width: 60,
+    height: 60,
   },
 });
 
