@@ -7,8 +7,6 @@ import Loading from "./components/LoadingComponent";
 
 const { persistor, store } = ConfigureStore();
 
-// kill $(lsof -ti:3001) to kill port 3001 if it's active
-
 export default function App() {
   return (
     <Provider store={store}>
