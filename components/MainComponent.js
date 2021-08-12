@@ -7,6 +7,7 @@ import CampsiteInfo from "./CampsiteInfoComponent";
 import Reservation from "./ReservationComponent";
 import Favorites from "./FavoritesComponent";
 import Login from "./LoginComponent";
+import Device from "./DeviceComponent";
 import Constants from "expo-constants";
 import {
   View,
@@ -221,6 +222,31 @@ const LoginNavigator = createStackNavigator(
   }
 );
 
+const DeviceNavigator = createStackNavigator(
+  {
+    Device: { screen: Device },
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#5637DD",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        color: "#fff",
+      },
+      headerLeft: (
+        <Icon
+          name="mobile"
+          type="font-awesome"
+          iconStyle={styles.stackIcon}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
+  }
+);
+
 const CustomDrawerContentComponent = (props) => (
   <ScrollView>
     <SafeAreaView
@@ -321,6 +347,15 @@ const MainNavigator = createDrawerNavigator(
         ),
       },
     },
+    Device: {
+      screen: DeviceNavigator,
+      navigationOptions: {
+        drawerLabel: "Device Info",
+        drawerIcon: ({ tintColor }) => (
+          <Icon name="mobile" type="font-awesome" size={24} color={tintColor} />
+        ),
+      },
+    },
   },
   {
     initialRouteName: "Home",
@@ -417,6 +452,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: "#fff",
     fontSize: 24,
+  },
+  deviceInfo: {
+    margin: 20,
+    fontSize: 24,
+    textAlign: "center",
   },
 });
 
