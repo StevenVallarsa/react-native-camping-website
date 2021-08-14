@@ -13,6 +13,7 @@
     "@react-native-community/netinfo": "6.0.0",
     "expo": "41",
     "expo-constants": "~11.0.1",
+    "expo-image-manipulator": "~9.1.0",
     "expo-image-picker": "~10.1.4",
     "expo-mail-composer": "~10.1.2",
     "expo-notifications": "~0.11.6",
