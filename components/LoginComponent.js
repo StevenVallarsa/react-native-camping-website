@@ -7,6 +7,7 @@ import * as Permissions from "expo-permissions";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { baseUrl } from "../shared/baseUrl";
 import * as ImageManipulator from "expo-image-manipulator";
+import * as MediaLibrary from "expo-media-library";
 class LoginTab extends Component {
   constructor(props) {
     super(props);
@@ -173,6 +174,7 @@ class RegisterTab extends Component {
     );
     console.log(processedImage);
     this.setState({ imageUrl: processedImage.uri });
+    MediaLibrary.saveToLibraryAsync(this.state.imageUrl);
   };
 
   handleRegister() {
